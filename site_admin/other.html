@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PS15575</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../assets_admin/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="../assets_admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../assets_admin/css/vertical-layout-dark/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../assets_admin/images/favicon.png" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/6.5.95/css/materialdesignicons.min.css" />
+
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+                <ul class="navbar-nav mr-lg-2 d-none d-lg-flex">
+                    <li class="nav-item nav-toggler-item">
+                        <button class="navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                            <span class="mdi mdi-menu"></span>
+                        </button>
+                    </li>
+
+                </ul>
+                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo" href="index.html"><img
+                            style="width: 150px; height:55px !important" src="http://chính.vn/images/logo.png"
+                            alt="logo" />
+                    </a>
+                    <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                            style="width: 150px; height:55px !important" src="http://chính.vn/images/logo.png"
+                            alt="logo" />
+                    </a>
+                </div>
+                <ul class="navbar-nav navbar-nav-right">
+
+                </ul>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="mdi mdi-view-quilt menu-icon"></i>
+                            <span class="menu-title">Trang chủ</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="other.html">
+                            <i class="mdi mdi-basket menu-icon"></i>
+                            <span class="menu-title">Đơn hàng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#listSP" aria-expanded="false"
+                            aria-controls="listSP">
+                            <i class="mdi mdi-layers menu-icon"></i>
+                            <span class="menu-title">Sản phẩm</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-chevron-down"></i>
+
+                        </a>
+                        <div class="collapse" id="listSP">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="listProduct.html">Danh sách</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="addProduct.html">Thêm sản phẩm</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#listLoai" aria-expanded="false"
+                            aria-controls="listLoai">
+                            <i class="mdi mdi-chart-pie menu-icon"></i>
+                            <span class="menu-title">Loại sản phẩm</span>
+                            <i class="menu-arrow"></i>
+                            <i class="mdi mdi-chevron-down"></i>
+
+                        </a>
+                        <div class="collapse" id="listLoai">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="listTypes.html">Danh sách</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="addType.html">Thêm loại</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+
+
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">DANH SÁCH <code>ĐƠN HÀNG</code></h4>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Tên khách hàng</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Email</th>
+                                                    <th>SĐT</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Ngày lên đơn</th>
+                                                    <th>Thao tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="listOthers">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022 All
+                            rights reserved.</span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+
+
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <script src="../js/baseAPI.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/Other.js"></script>
+    <script src="../assets_admin/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../assets_admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="../js/template.js"></script>
+    <script>
+        showOrders();
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,140 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "iPhone",
+      "stt": 1
+    },
+    {
+      "id": 2,
+      "name": "SamSung",
+      "stt": 2
+    },
+    {
+      "id": 3,
+      "name": "Nokia",
+      "stt": 3
+    },
+    {
+      "id": 4,
+      "name": "Xiaomi",
+      "stt": 4
+    },
+    {
+      "id": 5,
+      "name": "HeoQuay",
+      "stt": 5
+    },
+    {
+      "name": "Vsmart",
+      "stt": "7",
+      "id": 6
+    }
+  ],
+  "products": [
+    {
+      "name": "iPhone 143",
+      "status": 1,
+      "cate_id": "1",
+      "price": "25000000",
+      "detail": "day la thong tin cua dien thoai iphone",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-gold-1-1.jpg",
+      "id": 1,
+      "hot": 1,
+      "views": 0
+    },
+    {
+      "id": 2,
+      "name": "iPhone 12",
+      "status": 1,
+      "cate_id": 1,
+      "price": 17000000,
+      "detail": "day la thong tin cua dien thoai iphone",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/228741/iphone-12-mini-trang-1-org.jpg",
+      "hot": 1,
+      "views": 10
+    },
+    {
+      "name": "Samsung Galaxy Z Fold3 5G",
+      "cate_id": "2",
+      "price": "41000000",
+      "detail": "day la thong tin cua dien thoai samsung",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/226935/samsung-galaxy-z-fold-3-silver-gc-org.jpg",
+      "id": 3,
+      "hot": 0,
+      "views": 50
+    },
+    {
+      "id": 4,
+      "name": "Galaxy S21 FE 5G",
+      "status": 1,
+      "cate_id": 2,
+      "price": 16000000,
+      "detail": "day la thong tin cua dien thoai samsung",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/233090/samsung-galaxy-s21-fe-trang-1-1.jpg",
+      "hot": 0,
+      "views": 30
+    },
+    {
+      "name": "Nokia C2000",
+      "cate_id": 3,
+      "price": "2400000",
+      "detail": "day la thong tin cua dien thoai nokia",
+      "image": "https://cdn.tgdd.vn/Products/Images/42/236437/nokia-c20-vang-1-1-org.jpg",
+      "id": 5,
+      "hot": 0,
+      "views": 150
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "id_user": "1",
+      "customer_name": "Pham Hoang Chinh",
+      "customer_address": "68 Kien Giang",
+      "customer_email": "chinhtestnet@gmail.com",
+      "customer_phone_number": "0366390999",
+      "created_date": "2022/19/1",
+      "status": 1,
+      "order_details": 2
+    }
+  ],
+  "order_details": [
+    {
+      "id": 1,
+      "order_id": 2,
+      "name": "iPhone 12",
+      "product_id": 1,
+      "quantity": 1,
+      "unit_price": 250000
+    },
+    {
+      "id": 2,
+      "order_id": 2,
+      "name": "Samsung Galaxy Z Fold3 5G",
+      "product_id": 3,
+      "quantity": 2,
+      "unit_price": 41000000
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Phạm Hoàng Chính",
+      "username": "hoangchinh",
+      "password": "hoangchinh123"
+    },
+    {
+      "id": 2,
+      "fullName": "Ngọc Hân",
+      "username": "hanhan",
+      "password": "hanhan123"
+    },
+    {
+      "fullName": "Thành Người",
+      "username": "thanhnguoi",
+      "password": "thanhnguoi",
+      "id": 3
+    }
+  ]
+}
