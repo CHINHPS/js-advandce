@@ -1,0 +1,160 @@
+ 
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/index-6.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 03:29:52 GMT -->
+
+<head data-include="header">
+    <title>
+        Loại sản phẩm - ChinhPluss
+    </title>
+    <base href="../assets_user/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <!-- Body main wrapper start -->
+    <div class="body-wrapper">
+
+        <header 
+            data-include="nav"
+            class="ltn__header-area ltn__header-5 ltn__header-transparent gradient-color-2">
+        </header>
+
+ 
+        <!-- BREADCRUMB AREA START -->
+        <div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-90 bg-image" data-bg="img/bg/9.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
+                            <div class="section-title-area ltn__section-title-2">
+                                <h6 class="section-subtitle ltn__secondary-color">//  Chúc bạn mua hàng vui vẻ</h6>
+                                <h1 class="section-title white-color">Tài khoản</h1>
+                            </div>
+                            <div class="ltn__breadcrumb-list">
+                                <ul>
+                                    <li><a href="/">Trang chủ</a></li>
+                                    <li>Đăng nhập</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BREADCRUMB AREA END -->
+        
+        <!-- LOGIN AREA START -->
+        <div class="ltn__login-area pb-65">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title-area text-center">
+                            <h1 class="section-title">Đăng nhập</h1>
+                            <p>Nếu bạn chưa có tài khoản thì có thể đăng nhập</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="account-login-inner">
+                            <form id="login" name="login" class="ltn__form-box contact-form-box">
+                                <input type="text" name="user" placeholder="Tài khoản*">
+                                <input type="password" name="password" placeholder="Mật khẩu*">
+                                <div class="btn-wrapper mt-0">
+                                    <button class="theme-btn-1 btn btn-block" type="button" id="loginBtn">Đăng nhập</button>
+                                </div>
+                          
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="account-create text-center pt-50">
+                            <h4>Bạn chưa có tài khoản?</h4>
+                            <p>Nếu bạn chưa có tài khoản thì có thể đăng ký tại đây.</p>
+                            <div class="btn-wrapper">
+                                <a href="../site_user/register.html" class="theme-btn-1 btn black-btn">Đăng ký</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- LOGIN AREA END -->
+
+        <script>
+            if(localStorage.getItem('token') != null)
+                window.location = '../site_user/index.html'
+
+            document.querySelector('#loginBtn').addEventListener('click',()=>{
+
+                let user = document.login.user.value;
+                let pass = document.login.password.value;
+
+                if(user == '' || pass == ''){
+                    swal("Thông báo!", "Bạn phải nhập đầy đủ tài khoản và mật khẩu!", "error");
+                    return;
+                }
+                $.ajax({
+                    url: link+'/api/user/login',
+                    type: 'post',
+                    dataType: 'json',
+                    data: $('#login').serialize(),
+                    success: data =>{
+                        if(data.code == 100){
+                            localStorage.setItem('token', data.token);
+                            swal("Thông báo!", "Bạn đã đăng nhập thành công!", "success");
+                        } else {
+                            swal("Thông báo!", data.thongBao, "error");
+                        }
+                        
+                    }
+                })
+
+            });
+         
+
+            
+
+           
+
+
+        </script>
+        <style>
+            .ltn__shop-options .short-by .nice-select{
+                width: 100%;
+            }
+        </style>
+
+
+        <div data-include="footer"></div>
+
+
+      
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- preloader area start -->
+    <div class="preloader d-none" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- All JS Plugins -->
+
+    <script src="js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

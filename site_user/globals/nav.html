@@ -1,0 +1,161 @@
+
+
+    <!-- ltn__header-middle-area start -->
+    <div
+        class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-black sticky-active-into-mobile plr--9---">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="site-logo-wrap">
+                        <div class="site-logo">
+                            <a href="../site_user"><img src="http://chính.vn/images/logo.png" width="154px" alt="Logo"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col header-menu-column menu-color-white">
+                    <div class="header-menu d-none d-xl-block">
+                        <nav>
+                            <div class="ltn__main-menu">
+                                <ul id="list_cate">
+                                    <li><a href="../site_user">Trang chủ</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="ltn__header-options ltn__header-options-2">
+                    <!-- header-search-1 -->
+                    <div class="header-search-wrap">
+                        <div class="header-search-1">
+                            <div class="search-icon">
+                                <i class="icon-search for-search-show"></i>
+                                <i class="icon-cancel  for-search-close"></i>
+                            </div>
+                        </div>
+                        <div class="header-search-1-form">
+                            <form method="get" action="../site_user/products.html">
+                                <input type="text" name="keyword" value="" placeholder="Từ khoá..." />
+                                <button type="submit">
+                                    <span><i class="icon-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- user-menu -->
+                    <div class="ltn__drop-menu user-menu">
+                        <ul>
+                            <li>
+                                <a><i class="icon-user"></i></a>
+                                <ul id="account">
+                                    <li><a href="../site_user/login.html">Đăng nhập</a></li>
+                                    <li><a href="../site_user/register.html">Đăng ký</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <script>
+                       if(localStorage.getItem('token') != null)
+                            document.querySelector('#account'). innerHTML = `
+                                <li><a onclick="localStorage.removeItem('token');alert('Đăng xuất thành công!')">Đăng xuất</a></li>
+                            `;
+                        
+                    </script>
+                    <!-- mini-cart -->
+                    <div class="mini-cart-icon">
+                        <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                            <i class="icon-shopping-cart"></i>
+                        </a>
+                    </div>
+                    <!-- mini-cart -->
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ltn__header-middle-area end -->
+
+   <!-- Utilize Cart Menu Start -->
+    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+        <div class="ltn__utilize-menu-inner ltn__scrollbar">
+            <div class="ltn__utilize-menu-head">
+                <span class="ltn__utilize-menu-title">Giỏ hàng</span>
+                <button class="ltn__utilize-close">×</button>
+            </div>
+            <div class="mini-cart-product-area ltn__scrollbar" id="listCart">
+
+            </div>
+            <div class="mini-cart-footer">
+                <div class="mini-cart-sub-total">
+                    <h5>Tổng: <span id="allCash">0</span></h5>
+                </div>
+                <div class="btn-wrapper">
+                    <a href="../site_user/carts.html" class="theme-btn-2 btn btn-effect-2">Thanh toán</a>
+                </div>
+                <p>Miễn phí vận chuyển!</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="ltn__utilize-overlay"></div>
+
+    <script>
+
+        getAPI2('/api/category/list',(data) => {
+            data.forEach(element => {
+                document.querySelector('#list_cate').innerHTML += `
+                <li><a href="../site_user/category.html?id=${element.id}">${element.tenLoai}</a></li>
+                `;
+            });
+        }) 
+
+        document.querySelector('.ltn__utilize-toggle').addEventListener('click',()=>{
+            updateCart();
+        });
+
+        function delPd(id){
+            postAPI('/api/cart/delete',{id:id,token:token},data => {
+                swal("Thông báo!", data.thongbao);
+                updateCart();
+            });
+        }
+
+        function updateCart(){
+            let gioHangNav = document.querySelector('#listCart');
+            let allCash = 0;
+            gioHangNav.innerHTML = '';
+
+            postAPI('/api/cart/list',{token:token},data => {
+                if(data.code == 100){
+                    data.data.forEach(element => {
+                        getAPI2(`/api/product/view/${element.idProduct}/bac`,(data)=>{
+                            let cash = element.count*data.gia;
+                            gioHangNav.innerHTML += 
+                            `<div class="mini-cart-item clearfix">
+                                <div class="mini-cart-img">
+                                    <a><img src="${data.anhSP}" alt="Image"></a>
+                                    <span class="mini-cart-item-delete" onclick="delPd(${element.id})"><i class="icon-cancel"></i></span>
+                                </div>
+                                <div class="mini-cart-info">
+                                    <h6><a>${data.tenSP}</a></h6>
+                                    <span class="mini-cart-quantity">${element.count} x ${new Intl.NumberFormat().format(cash)}đ</span>
+                                </div>
+                            </div>`;
+                            allCash += Number(cash);
+                            document.querySelector('#allCash').innerText = new Intl.NumberFormat().format(allCash)+'đ';
+                        });
+                        console.log(element);
+                    });
+                    
+
+                }
+            });
+        }
+
+        
+
+
+    </script>
+
+    <!-- Utilize Cart Menu End -->
+    <script src="./js/plugins.js"></script>
+    <script src="./js/main.js"></script>

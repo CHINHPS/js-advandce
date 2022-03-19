@@ -1,0 +1,250 @@
+ 
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/index-6.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 03:29:52 GMT -->
+
+<head data-include="header">
+    <title>
+        Loại sản phẩm - ChinhPluss
+    </title>
+    <base href="../assets_user/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <!-- Body main wrapper start -->
+    <div class="body-wrapper">
+
+        <header 
+            data-include="nav"
+            class="ltn__header-area ltn__header-5 ltn__header-transparent gradient-color-2">
+        </header>
+
+ 
+        <!-- BREADCRUMB AREA START -->
+        <div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-90 bg-image" data-bg="img/bg/9.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
+                            <div class="section-title-area ltn__section-title-2">
+                                <h6 class="section-subtitle ltn__secondary-color">//  Chúc bạn mua hàng vui vẻ</h6>
+                                <h1 class="section-title white-color">Giỏ hàng</h1>
+                            </div>
+                            <div class="ltn__breadcrumb-list">
+                                <ul>
+                                    <li><a href="/">Trang chủ</a></li>
+                                    <li>Giỏ hàng</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BREADCRUMB AREA END -->
+        
+        <!-- SHOPING CART AREA START -->
+        <div class="liton__shoping-cart-area mb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="shoping-cart-inner row">
+                            <div class="col-lg-12">
+                                <div class="shoping-cart-table table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <th class="cart-product-remove">Thao tác</th>
+                                            <th class="cart-product-image">Hình ảnh</th>
+                                            <th class="cart-product-info">Tên sản phẩm</th>
+                                            <th class="cart-product-price">Giá</th>
+                                            <th class="cart-product-quantity">Số lượng</th>
+                                            <th class="cart-product-subtotal">Thành tiền</th>
+                                        </thead>
+                                        <tbody id="list_cart">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="ltn__checkout-single-content mt-50">
+                                    <div class="ltn__checkout-single-content-info">
+                                        <form name="thongtin" >
+                                            <h6>Thông tin khách hàng</h6>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="input-item input-item-name ltn__custom-icon">
+                                                        <input type="text" name="ltn__name" placeholder="Họ tên" >
+                                                    </div>
+                                                </div>
+                                             
+                                                <div class="col-md-6">
+                                                    <div class="input-item input-item-email ltn__custom-icon">
+                                                        <input type="email" name="ltn__email" placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-item input-item-phone ltn__custom-icon">
+                                                        <input type="text" name="ltn__phone" placeholder="Số điện thoại">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="input-item input-item-website ltn__custom-icon">
+                                                        <input type="text" name="ltn__company" placeholder="Địa chỉ nhận hàng">
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                            
+                                          
+        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="shoping-cart-total mt-50">
+                                    <h4>Tổng số giỏ hàng</h4>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Tổng tiền</td>
+                                                <td id="all_cash">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phí vận chuyển</td>
+                                                <td>0đ</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <div class="btn-wrapper text-right">
+                                        <a id="checkout" class="theme-btn-1 btn btn-effect-1">Đặt hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SHOPING CART AREA END -->
+
+
+        <script>
+
+            document.querySelector('#checkout').addEventListener('click',()=>{
+                let ltn__name = document.thongtin.ltn__name.value;
+                let ltn__email = document.thongtin.ltn__email.value;
+                let ltn__phone = document.thongtin.ltn__phone.value;
+                let ltn__company = document.thongtin.ltn__company.value;
+                if(ltn__name == '' || ltn__email == '' || ltn__phone == '' || ltn__company == ''){
+                    swal("Thông báo!", "Bạn phải nhập đầy đủ thông tin!", "error");
+                    return;
+                }
+
+                postAPI('/api/cart/checkout',{
+                    "token": token,
+                    "customer_name": ltn__name,
+                    "customer_address": ltn__company,
+                    "customer_email": ltn__email,
+                    "customer_phone_number": ltn__phone
+                },(data) => {
+                    swal("Thông báo!", "Thanh toán thành công!", "success");
+                })
+               
+            });
+            
+            load_cart();
+
+            function delPdd(id){
+                postAPI('/api/cart/delete',{id:id,token:token},data => {
+                    swal("Thông báo!", data.thongbao);
+                    load_cart();
+                });
+            }
+
+            function load_cart(){
+                let list_cart = document.querySelector('#list_cart');
+                let allCash = 0;
+                list_cart.innerHTML = '';
+
+                postAPI('/api/cart/list',{token:token},data => {
+                    if(data.code == 100){
+                        data.data.forEach(element => {
+                            getAPI2(`/api/product/view/${element.idProduct}/bac`,(data)=>{
+                                let cash = element.count*data.gia;
+                                list_cart.innerHTML += `
+                                <tr>
+                                    <td class="cart-product-remove" onclick="delPdd(${element.id})">x</td>
+                                    <td class="cart-product-image">
+                                        <a><img src="${data.anhSP}" alt="#"></a>
+                                    </td>
+                                    <td class="cart-product-info">
+                                        <h4><a href="../site_user/view_product.html?id=${element.idProduct}">${data.tenSP}</a></h4>
+                                    </td>
+                                    <td class="cart-product-price">${new Intl.NumberFormat().format(data.gia)}đ</td>
+                                    <td class="cart-product-quantity">
+                                        <span class="cart-plus-minus-box">${element.count}</span>
+                                    </td>
+                                    <td class="cart-product-subtotal">${new Intl.NumberFormat().format(cash)}đ</td>
+                                </tr>`;
+                                allCash += Number(cash);
+                                document.querySelector('#all_cash').innerText = new Intl.NumberFormat().format(allCash)+'đ';
+                            });
+                            console.log(element);
+                        });
+                        
+
+                    }
+                });
+
+            }
+
+
+        </script>
+        <style>
+            .ltn__shop-options .short-by .nice-select{
+                width: 100%;
+            }
+            .cart-product-image{
+                width: 275px;
+            }
+            .cart-product-info{
+                width: 275px;
+            }
+        </style>
+
+
+        <div data-include="footer"></div>
+
+
+      
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- preloader area start -->
+    <div class="preloader d-none" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <!-- All JS Plugins -->
+
+    <script src="js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
